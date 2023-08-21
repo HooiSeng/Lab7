@@ -67,16 +67,19 @@ class GameViewModel : ViewModel() {
             onGameFinish()
         } else {
             //Select and remove a _word from the list
+            //.value -> getting from livedata instead of one word
             _word.value = wordList.removeAt(0)
         }
     }
     /** Methods for buttons presses **/
     fun onSkip() {
+        //?. -> null safety -> checking if it is null
         _score.value = (score.value)?.minus(1)
         nextWord()
     }
 
     fun onCorrect() {
+        //?. -> null safety -> checking if it is null
         _score.value = (score.value)?.plus(1)
         nextWord()
     }

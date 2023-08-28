@@ -54,9 +54,6 @@ class GameFragment : Fragment() {
             container,
             false
         )
-        // Specify the fragment view as the lifecycle owner of the binding.
-        // This is used so that the binding can observe LiveData updates
-        binding.lifecycleOwner = viewLifecycleOwner
 
         Log.i("GameFragment", "Called ViewModelProvider.get")
         viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
@@ -67,9 +64,10 @@ class GameFragment : Fragment() {
 
         // Set the viewmodel for databinding - this allows the bound layout access
         // to all the data in the ViewModel
-
-
         binding.gameViewModel = viewModel
+        // Specify the fragment view as the lifecycle owner of the binding.
+        // This is used so that the binding can observe LiveData updates
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
 
     }
